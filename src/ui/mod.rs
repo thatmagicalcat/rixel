@@ -2,7 +2,7 @@ use crate::*;
 
 use graphics::CharacterCache;
 
-pub struct UIButton {
+pub struct Button {
     pub text: String,
     pub color: Color,
     pub text_color: Color,
@@ -13,7 +13,7 @@ pub struct UIButton {
     pub padding: [f64; 2],
 }
 
-impl UIButton {
+impl Button {
     pub fn new(
         text: &str,
         color: Color,
@@ -25,7 +25,7 @@ impl UIButton {
     ) -> Self {
         let (width, height) = measure_text_dimensions(text, size, glyphs);
 
-        UIButton {
+        Button {
             text: text.to_string(),
             color,
             text_color,
@@ -77,11 +77,11 @@ impl UIButton {
         );
     }
 
-    pub fn is_over(&self, x: f64, y: f64) -> bool {
+    pub fn point_inside(&self, x: f64, y: f64) -> bool {
         x > self.pos[0]
-            && x < self.pos[0] + self.width
             && y > self.pos[1]
-            && y < self.pos[1] + self.height
+            && x < self.pos[0] + self.width + self.padding[0] * 2.0
+            && y < self.pos[1] + self.height + self.padding[1] * 2.0
     }
 }
 pub fn draw_text(
