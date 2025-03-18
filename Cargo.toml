@@ -6,3 +6,10 @@ description = "A simple 2D pixel art editor"
 license = "GPL-3.0-only"
 
 [dependencies]
+gl = "0.14.0"
+image = { version = "0.25.5", default-features = false }
+piston = "1.0.0"
+piston2d-graphics = "0.45.0"
+piston2d-opengl_graphics = "0.88.0"
+pistoncore-glfw_window = { git = "https://github.com/thatmagicalcat/glfw_window", version = "0.81.0" }
+
